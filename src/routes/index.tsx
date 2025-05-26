@@ -70,8 +70,10 @@ function Index() {
       <main className="container  px-4 py-8">
         {/* Welcome Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Build Your Perfect Resume</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <h2 className="text-5xl font-bold mb-4 font-playfair">
+            Build Your Perfect Resume
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Create professional resumes with AI-powered suggestions and
             beautiful templates. Land your dream job with a resume that stands
             out.

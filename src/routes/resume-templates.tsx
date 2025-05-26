@@ -86,7 +86,9 @@ function RouteComponent() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <h1 className="text-4xl font-bold text-center mt-24">Resume templates</h1>
+      <h1 className="text-5xl font-playfair font-bold text-center mt-24">
+        Resume templates
+      </h1>
       <p className="text-lg text-muted-foreground text-center mt-4 max-w-2xl mx-auto">
         Each resume template is designed to follow the exact rules you need to
         get hired faster. Use our resume templates and get free access to 18

@@ -3,6 +3,10 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import "./index.css";
 
+// fonts
+import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/inter";
+
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
 
