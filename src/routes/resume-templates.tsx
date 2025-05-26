@@ -1,4 +1,11 @@
 import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { createFileRoute } from "@tanstack/react-router";
@@ -65,7 +72,21 @@ export const Route = createFileRoute("/resume-templates")({
 function RouteComponent() {
   return (
     <main className="container mx-auto py-20">
-      <h1 className="text-4xl font-bold text-center">Resume templates</h1>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/resume-templates">
+              Resume Templates
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <h1 className="text-4xl font-bold text-center mt-24">Resume templates</h1>
       <p className="text-lg text-muted-foreground text-center mt-4 max-w-2xl mx-auto">
         Each resume template is designed to follow the exact rules you need to
         get hired faster. Use our resume templates and get free access to 18
