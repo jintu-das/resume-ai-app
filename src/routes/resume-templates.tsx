@@ -74,7 +74,7 @@ function RouteComponent() {
       <Button className="mt-6 mx-auto block">Create my resume</Button>
 
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
           {templates.map((template) => (
             <Card
               key={template.id}

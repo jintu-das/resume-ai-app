@@ -67,7 +67,7 @@ function Index() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container  px-4 py-8">
         {/* Welcome Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Build Your Perfect Resume</h2>
