@@ -195,13 +195,6 @@ function Index() {
           </div>
         </div>
       </main>
-
-      {/* Template Selector Modal */}
-      {/* <TemplateSelector
-        open={showTemplateSelector}
-        onClose={() => setShowTemplateSelector(false)}
-        onSelect={handleTemplateSelect}
-      /> */}
     </div>
   );
 }
