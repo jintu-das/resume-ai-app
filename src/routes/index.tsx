@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calendar, Download, FileText, Plus, Sparkles } from "lucide-react";
 
 interface Resume {
@@ -77,11 +77,17 @@ function Index() {
             out.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Link
+              to="/resume-templates"
+              className={buttonVariants({
+                size: "lg",
+              })}
+            >
               <Plus className="h-5 w-5 mr-2" />
               Create New Resume
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+            </Link>
+
+            <Button variant="outline" size="lg">
               <Download className="h-5 w-5 mr-2" />
               Import Resume
             </Button>
