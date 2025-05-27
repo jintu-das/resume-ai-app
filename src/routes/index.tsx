@@ -8,7 +8,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calendar, Download, FileText, Plus, Sparkles } from "lucide-react";
+import {
+  Calendar,
+  Download,
+  FileText,
+  Plus,
+  SparkleIcon,
+  Sparkles,
+} from "lucide-react";
 
 interface Resume {
   id: string;
@@ -33,13 +40,6 @@ const mockResumes: Resume[] = [
     lastModified: "2024-01-10",
     status: "draft",
   },
-  {
-    id: "3",
-    title: "Data Scientist Resume",
-    template: "Minimal",
-    lastModified: "2024-01-08",
-    status: "complete",
-  },
 ];
 
 export const Route = createFileRoute("/")({
@@ -53,8 +53,8 @@ function Index() {
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <FileText className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold">ResumeAI</h1>
+            <SparkleIcon className="size-6 text-primary" />
+            <h1 className="text-xl font-semibold">Resume AI</h1>
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="outline" size="sm">
@@ -67,9 +67,9 @@ function Index() {
       </header>
 
       {/* Main Content */}
-      <main className="container  px-4 py-8">
+      <main className="container space-y-40 px-4 py-8">
         {/* Welcome Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mt-32">
           <h2 className="text-5xl font-bold mb-4 font-playfair">
             Build Your Perfect Resume
           </h2>
@@ -97,9 +97,11 @@ function Index() {
         </div>
 
         {/* Resume Cards */}
-        <div className="mb-8">
+        <div className="">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-semibold">Your Resumes</h3>
+            <h3 className="text-3xl font-semibold font-playfair">
+              Your Resumes
+            </h3>
             <Button variant="ghost">
               <Plus className="h-4 w-4 mr-2" />
               New Resume
@@ -121,7 +123,7 @@ function Index() {
               </CardContent>
             </Card>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
               {mockResumes.map((resume) => (
                 <Card
                   key={resume.id}
@@ -168,7 +170,7 @@ function Index() {
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           <div className="text-center">
             <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
