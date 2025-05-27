@@ -44,10 +44,10 @@ function Index() {
     <>
       {/* Welcome Section */}
       <div className="text-center mt-32">
-        <h2 className="text-5xl font-bold mb-4 font-playfair">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair">
           Build Your Perfect Resume
         </h2>
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
           Create professional resumes with AI-powered suggestions and beautiful
           templates. Land your dream job with a resume that stands out.
         </p>
@@ -72,7 +72,9 @@ function Index() {
       {/* Resume Cards */}
       <div className="">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-3xl font-semibold font-playfair">Your Resumes</h3>
+          <h3 className="text-2xl md:text-3xl font-semibold font-playfair">
+            Your Resumes
+          </h3>
           <Button variant="ghost">
             <Plus className="h-4 w-4 mr-2" />
             New Resume
