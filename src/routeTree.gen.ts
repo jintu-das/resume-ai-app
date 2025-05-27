@@ -11,17 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ResumeTemplatesImport } from './routes/resume-templates'
 import { Route as AboutImport } from './routes/about'
-import { Route as IndexImport } from './routes/index'
+import { Route as MarketingLayoutImport } from './routes/_marketing/_layout'
+import { Route as MarketingLayoutIndexImport } from './routes/_marketing/_layout/index'
+import { Route as MarketingLayoutResumeTemplatesImport } from './routes/_marketing/_layout/resume-templates'
 
 // Create/Update Routes
-
-const ResumeTemplatesRoute = ResumeTemplatesImport.update({
-  id: '/resume-templates',
-  path: '/resume-templates',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const AboutRoute = AboutImport.update({
   id: '/about',
@@ -29,23 +24,28 @@ const AboutRoute = AboutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
+const MarketingLayoutRoute = MarketingLayoutImport.update({
+  id: '/_marketing/_layout',
   getParentRoute: () => rootRoute,
 } as any)
+
+const MarketingLayoutIndexRoute = MarketingLayoutIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MarketingLayoutRoute,
+} as any)
+
+const MarketingLayoutResumeTemplatesRoute =
+  MarketingLayoutResumeTemplatesImport.update({
+    id: '/resume-templates',
+    path: '/resume-templates',
+    getParentRoute: () => MarketingLayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -53,56 +53,89 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
-    '/resume-templates': {
-      id: '/resume-templates'
+    '/_marketing/_layout': {
+      id: '/_marketing/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof MarketingLayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_marketing/_layout/resume-templates': {
+      id: '/_marketing/_layout/resume-templates'
       path: '/resume-templates'
       fullPath: '/resume-templates'
-      preLoaderRoute: typeof ResumeTemplatesImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof MarketingLayoutResumeTemplatesImport
+      parentRoute: typeof MarketingLayoutImport
+    }
+    '/_marketing/_layout/': {
+      id: '/_marketing/_layout/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof MarketingLayoutIndexImport
+      parentRoute: typeof MarketingLayoutImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface MarketingLayoutRouteChildren {
+  MarketingLayoutResumeTemplatesRoute: typeof MarketingLayoutResumeTemplatesRoute
+  MarketingLayoutIndexRoute: typeof MarketingLayoutIndexRoute
+}
+
+const MarketingLayoutRouteChildren: MarketingLayoutRouteChildren = {
+  MarketingLayoutResumeTemplatesRoute: MarketingLayoutResumeTemplatesRoute,
+  MarketingLayoutIndexRoute: MarketingLayoutIndexRoute,
+}
+
+const MarketingLayoutRouteWithChildren = MarketingLayoutRoute._addFileChildren(
+  MarketingLayoutRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/resume-templates': typeof ResumeTemplatesRoute
+  '': typeof MarketingLayoutRouteWithChildren
+  '/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
+  '/': typeof MarketingLayoutIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/resume-templates': typeof ResumeTemplatesRoute
+  '/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
+  '/': typeof MarketingLayoutIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/resume-templates': typeof ResumeTemplatesRoute
+  '/_marketing/_layout': typeof MarketingLayoutRouteWithChildren
+  '/_marketing/_layout/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
+  '/_marketing/_layout/': typeof MarketingLayoutIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/resume-templates'
+  fullPaths: '/about' | '' | '/resume-templates' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/resume-templates'
-  id: '__root__' | '/' | '/about' | '/resume-templates'
+  to: '/about' | '/resume-templates' | '/'
+  id:
+    | '__root__'
+    | '/about'
+    | '/_marketing/_layout'
+    | '/_marketing/_layout/resume-templates'
+    | '/_marketing/_layout/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ResumeTemplatesRoute: typeof ResumeTemplatesRoute
+  MarketingLayoutRoute: typeof MarketingLayoutRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ResumeTemplatesRoute: ResumeTemplatesRoute,
+  MarketingLayoutRoute: MarketingLayoutRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -115,19 +148,27 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
         "/about",
-        "/resume-templates"
+        "/_marketing/_layout"
       ]
-    },
-    "/": {
-      "filePath": "index.tsx"
     },
     "/about": {
       "filePath": "about.tsx"
     },
-    "/resume-templates": {
-      "filePath": "resume-templates.tsx"
+    "/_marketing/_layout": {
+      "filePath": "_marketing/_layout.tsx",
+      "children": [
+        "/_marketing/_layout/resume-templates",
+        "/_marketing/_layout/"
+      ]
+    },
+    "/_marketing/_layout/resume-templates": {
+      "filePath": "_marketing/_layout/resume-templates.tsx",
+      "parent": "/_marketing/_layout"
+    },
+    "/_marketing/_layout/": {
+      "filePath": "_marketing/_layout/index.tsx",
+      "parent": "/_marketing/_layout"
     }
   }
 }

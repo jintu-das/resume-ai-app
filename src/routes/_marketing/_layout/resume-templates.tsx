@@ -65,13 +65,13 @@ const templates: Template[] = [
   },
 ];
 
-export const Route = createFileRoute("/resume-templates")({
+export const Route = createFileRoute("/_marketing/_layout/resume-templates")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <main className="container mx-auto py-20">
+    <>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -86,18 +86,20 @@ function RouteComponent() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <h1 className="text-5xl font-playfair font-bold text-center mt-24">
-        Resume templates
-      </h1>
-      <p className="text-lg text-muted-foreground text-center mt-4 max-w-2xl mx-auto">
-        Each resume template is designed to follow the exact rules you need to
-        get hired faster. Use our resume templates and get free access to 18
-        more career tools!
-      </p>
-      <Button className="mt-6 mx-auto block">Create my resume</Button>
-
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <h1 className="text-5xl font-playfair font-bold text-center">
+          Resume templates
+        </h1>
+        <p className="text-lg text-muted-foreground text-center mt-4 max-w-2xl mx-auto">
+          Each resume template is designed to follow the exact rules you need to
+          get hired faster. Use our resume templates and get free access to 18
+          more career tools!
+        </p>
+        <Button className="mt-6 mx-auto block">Create my resume</Button>
+      </section>
+
+      <section className="-mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
           {templates.map((template) => (
             <Card
               key={template.id}
@@ -127,6 +129,6 @@ function RouteComponent() {
           ))}
         </div>
       </section>
-    </main>
+    </>
   );
 }
