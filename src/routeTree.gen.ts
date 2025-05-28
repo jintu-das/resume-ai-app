@@ -12,7 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
+import { Route as AppRouteImport } from './routes/app/route'
 import { Route as AppIndexImport } from './routes/app/index'
+import { Route as AppDashboardImport } from './routes/app/dashboard'
 import { Route as MarketingLayoutImport } from './routes/_marketing/_layout'
 import { Route as MarketingLayoutIndexImport } from './routes/_marketing/_layout/index'
 import { Route as MarketingLayoutResumeTemplatesImport } from './routes/_marketing/_layout/resume-templates'
@@ -25,10 +27,22 @@ const AboutRoute = AboutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const AppIndexRoute = AppIndexImport.update({
-  id: '/app/',
-  path: '/app/',
+const AppRouteRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRoute,
+} as any)
+
+const AppIndexRoute = AppIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+
+const AppDashboardRoute = AppDashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 
 const MarketingLayoutRoute = MarketingLayoutImport.update({
@@ -53,6 +67,13 @@ const MarketingLayoutResumeTemplatesRoute =
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -67,12 +88,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketingLayoutImport
       parentRoute: typeof rootRoute
     }
+    '/app/dashboard': {
+      id: '/app/dashboard'
+      path: '/dashboard'
+      fullPath: '/app/dashboard'
+      preLoaderRoute: typeof AppDashboardImport
+      parentRoute: typeof AppRouteImport
+    }
     '/app/': {
       id: '/app/'
-      path: '/app'
-      fullPath: '/app'
+      path: '/'
+      fullPath: '/app/'
       preLoaderRoute: typeof AppIndexImport
-      parentRoute: typeof rootRoute
+      parentRoute: typeof AppRouteImport
     }
     '/_marketing/_layout/resume-templates': {
       id: '/_marketing/_layout/resume-templates'
@@ -93,6 +121,20 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface AppRouteRouteChildren {
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppDashboardRoute: AppDashboardRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
 interface MarketingLayoutRouteChildren {
   MarketingLayoutResumeTemplatesRoute: typeof MarketingLayoutResumeTemplatesRoute
   MarketingLayoutIndexRoute: typeof MarketingLayoutIndexRoute
@@ -108,15 +150,18 @@ const MarketingLayoutRouteWithChildren = MarketingLayoutRoute._addFileChildren(
 )
 
 export interface FileRoutesByFullPath {
+  '/app': typeof AppRouteRouteWithChildren
   '/about': typeof AboutRoute
   '': typeof MarketingLayoutRouteWithChildren
-  '/app': typeof AppIndexRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/': typeof AppIndexRoute
   '/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
   '/': typeof MarketingLayoutIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/about': typeof AboutRoute
+  '/app/dashboard': typeof AppDashboardRoute
   '/app': typeof AppIndexRoute
   '/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
   '/': typeof MarketingLayoutIndexRoute
@@ -124,8 +169,10 @@ export interface FileRoutesByTo {
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/_marketing/_layout': typeof MarketingLayoutRouteWithChildren
+  '/app/dashboard': typeof AppDashboardRoute
   '/app/': typeof AppIndexRoute
   '/_marketing/_layout/resume-templates': typeof MarketingLayoutResumeTemplatesRoute
   '/_marketing/_layout/': typeof MarketingLayoutIndexRoute
@@ -133,13 +180,22 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/about' | '' | '/app' | '/resume-templates' | '/'
+  fullPaths:
+    | '/app'
+    | '/about'
+    | ''
+    | '/app/dashboard'
+    | '/app/'
+    | '/resume-templates'
+    | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/app' | '/resume-templates' | '/'
+  to: '/about' | '/app/dashboard' | '/app' | '/resume-templates' | '/'
   id:
     | '__root__'
+    | '/app'
     | '/about'
     | '/_marketing/_layout'
+    | '/app/dashboard'
     | '/app/'
     | '/_marketing/_layout/resume-templates'
     | '/_marketing/_layout/'
@@ -147,15 +203,15 @@ export interface FileRouteTypes {
 }
 
 export interface RootRouteChildren {
+  AppRouteRoute: typeof AppRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   MarketingLayoutRoute: typeof MarketingLayoutRouteWithChildren
-  AppIndexRoute: typeof AppIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  AppRouteRoute: AppRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   MarketingLayoutRoute: MarketingLayoutRouteWithChildren,
-  AppIndexRoute: AppIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -168,8 +224,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
+        "/app",
         "/about",
-        "/_marketing/_layout",
+        "/_marketing/_layout"
+      ]
+    },
+    "/app": {
+      "filePath": "app/route.tsx",
+      "children": [
+        "/app/dashboard",
         "/app/"
       ]
     },
@@ -183,8 +246,13 @@ export const routeTree = rootRoute
         "/_marketing/_layout/"
       ]
     },
+    "/app/dashboard": {
+      "filePath": "app/dashboard.tsx",
+      "parent": "/app"
+    },
     "/app/": {
-      "filePath": "app/index.tsx"
+      "filePath": "app/index.tsx",
+      "parent": "/app"
     },
     "/_marketing/_layout/resume-templates": {
       "filePath": "_marketing/_layout/resume-templates.tsx",
