@@ -14,7 +14,7 @@ function RouteComponent() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <SparkleIcon className="size-5 md:size-6 text-primary" />
-            <h1 className="text-base md:text-xl font-semibold">Resume AI</h1>
+            <h1 className="text-base md:text-xl font-semibold">Resumade AI</h1>
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="outline" size="sm">
