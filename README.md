@@ -1,54 +1,49 @@
-# React + TypeScript + Vite
+# 🧠 AI Resume Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AI Resume Builder** is a modern, web-based application that empowers users to create professional resumes effortlessly using AI. With drag-and-drop customization, smart content suggestions, and export-ready templates, this tool helps job seekers craft tailored resumes that stand out.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧩 **Drag-and-Drop Interface** – Seamlessly rearrange resume sections  
+- ✍️ **AI Writing Assistant** – Generate, rewrite, or optimize content using OpenAI  
+- ➕ **Custom Sections** – Add, remove, or rename sections as needed  
+- 📄 **Live Preview** – View changes in real-time  
+- 📤 **Export Options** – Download as PDF, DOCX, or Markdown  
+- 🎨 **Template Gallery** – Switch between clean, professional layouts  
+- 🔍 **Job Description Matching** – Tailor your resume to specific job posts  
+- 🌙 **Light/Dark Mode** – Adaptive theme for user preference  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 💡 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend**:  React, Tailwind CSS  
+- **AI Integration**: OpenAI API (GPT-4)  
+- **Export Tools**: PDFKit / Puppeteer  
+- **Auth & DB (optional)**: Supabase or Firebase  
+- **Hosting**: Vercel  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📌 Use Cases
+
+- Job seekers building tailored resumes  
+- Career coaches creating templates for clients  
+- Developers generating resume JSON → UI → Export pipeline  
+
+---
+
+## 🛠️ Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/ai-resume-builder.git
+cd ai-resume-builder
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
