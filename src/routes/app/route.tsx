@@ -1,5 +1,11 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import {
   Download,
@@ -33,12 +39,24 @@ function RouteComponent() {
           <Button variant="outline">
             <Sparkle className="size-4" /> AI Tools
           </Button>
-          <Button variant="outline">
-            <Download className="size-4" /> Export
-          </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                <Download className="size-4" /> Export
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem>Export as PDF</DropdownMenuItem>
+              <DropdownMenuItem>Export as DOCX</DropdownMenuItem>
+              <DropdownMenuItem>Export as TXT</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button>
             <Share className="size-4" /> Share
           </Button>
+
           <ModeToggle />
         </div>
 
