@@ -61,7 +61,7 @@ function RouteComponent() {
 
       <section className="flex flex-col items-center">
         <h1 className="text-5xl font-playfair font-bold text-center">
-          Resume templates
+          Resume Templates
         </h1>
         <p className="text-lg text-muted-foreground text-center mt-4 max-w-4xl mx-auto text-balance">
           Our expertly crafted resume templates are built to meet industry
@@ -75,7 +75,7 @@ function RouteComponent() {
             className: "mt-6 mx-auto block",
           })}
         >
-          Create my resume
+          Get Started
         </Link>
       </section>
 
