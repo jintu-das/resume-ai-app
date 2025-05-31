@@ -45,9 +45,7 @@ const NAV_ITEMS = [
 export default function ResumeSidebar() {
   return (
     <aside className="border-r p-4 hidden lg:block">
-      <h1 className="font-medium text-lg">Resume Sections</h1>
-
-      <div className="space-y-6 py-12">
+      <div className="space-y-6 ">
         {NAV_ITEMS?.map((item) => (
           <Button
             key={item.id}
