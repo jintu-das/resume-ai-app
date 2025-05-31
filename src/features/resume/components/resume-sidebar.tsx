@@ -44,13 +44,13 @@ const NAV_ITEMS = [
 
 export default function ResumeSidebar() {
   return (
-    <aside className="border-r p-4 hidden lg:block">
+    <aside className="border-r p-6 hidden lg:block">
       <div className="space-y-6 ">
         {NAV_ITEMS?.map((item) => (
           <Button
             key={item.id}
             size="lg"
-            variant="ghost"
+            variant={item.id === 1 ? "default" : "ghost"}
             className="w-full justify-start !pl-6"
           >
             <item.icon className="size-4 mr-2" />
