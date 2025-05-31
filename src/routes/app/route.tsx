@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import {
   Download,
+  Menu,
   Share,
   Sparkle,
   SparkleIcon,
@@ -24,11 +25,11 @@ function RouteComponent() {
           </div>
         </div>
 
-        <p className="flex-1 flex justify-center items-center gap-2 text-sm">
+        <p className="flex-1 hidden lg:flex justify-center items-center gap-2 text-sm ">
           <UploadCloud className="size-4" /> Saving your resume...
         </p>
 
-        <div className="flex-1 flex justify-end items-center gap-2">
+        <div className="flex-1 hidden lg:flex justify-end items-center gap-2 ">
           <Button variant="outline">
             <Sparkle className="size-4" /> AI Tools
           </Button>
@@ -39,6 +40,13 @@ function RouteComponent() {
             <Share className="size-4" /> Share
           </Button>
           <ModeToggle />
+        </div>
+
+        <div className="flex-1 flex lg:hidden justify-end items-center gap-2 ">
+          <ModeToggle />
+          <Button variant="outline" size="icon">
+            <Menu className="size-4" />
+          </Button>
         </div>
       </header>
 
