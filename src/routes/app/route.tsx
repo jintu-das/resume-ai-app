@@ -1,7 +1,13 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
-import { Download, Share, SparkleIcon, UploadCloud } from "lucide-react";
+import {
+  Download,
+  Share,
+  Sparkle,
+  SparkleIcon,
+  UploadCloud,
+} from "lucide-react";
 
 export const Route = createFileRoute("/app")({
   component: RouteComponent,
@@ -9,7 +15,7 @@ export const Route = createFileRoute("/app")({
 
 function RouteComponent() {
   return (
-    <div>
+    <>
       <header className="flex items-center justify-between gap-2 p-4 border-b">
         <div className="flex-1">
           <div className="flex items-center space-x-2">
@@ -24,6 +30,9 @@ function RouteComponent() {
 
         <div className="flex-1 flex justify-end items-center gap-2">
           <Button variant="outline">
+            <Sparkle className="size-4" /> AI Tools
+          </Button>
+          <Button variant="outline">
             <Download className="size-4" /> Export
           </Button>
           <Button>
@@ -32,7 +41,8 @@ function RouteComponent() {
           <ModeToggle />
         </div>
       </header>
+
       <Outlet />
-    </div>
+    </>
   );
 }
