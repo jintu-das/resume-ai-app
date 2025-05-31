@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function ResumeContainer() {
   return (
-    <section className="grid place-content-center bg-primary-foreground">
+    <section className="grid place-content-center bg-primary-foreground dark:bg-background">
       <Card className="w-[600px] h-[800px]">
         <CardContent>
           <p>
