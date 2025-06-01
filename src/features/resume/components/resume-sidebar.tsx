@@ -1,9 +1,11 @@
 import {
   Award,
   Briefcase,
+  CirclePlus,
   Code,
   FileText,
   GraduationCap,
+  Lock,
   User,
 } from "lucide-react";
 
@@ -13,6 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 const NAV_ITEMS = [
   {
@@ -20,36 +23,56 @@ const NAV_ITEMS = [
     tab_id: "personal-info",
     title: "Personal Information",
     icon: User,
+    isPro: false,
+    isDisabled: false,
   },
   {
     id: 2,
     tab_id: "work-experience",
     title: "Work Experience",
     icon: Briefcase,
+    isPro: false,
+    isDisabled: false,
   },
   {
     id: 3,
     tab_id: "education",
     title: "Education",
     icon: GraduationCap,
+    isPro: false,
+    isDisabled: false,
   },
   {
     id: 4,
     tab_id: "skills",
     title: "Skills",
     icon: Code,
+    isPro: false,
+    isDisabled: false,
   },
   {
     id: 5,
     tab_id: "projects",
     title: "Projects",
     icon: FileText,
+    isPro: false,
+    isDisabled: false,
   },
   {
     id: 6,
     tab_id: "certifications",
     title: "Certifications",
     icon: Award,
+    isPro: false,
+    isDisabled: false,
+  },
+  {
+    id: 7,
+    tab_id: "add-more-details",
+    title: "Add More Details",
+    icon: CirclePlus,
+    isPro: true, // Assuming this is a pro feature
+    isDisabled: true,
   },
 ];
 
@@ -64,14 +87,18 @@ export default function ResumeSidebar() {
       >
         {NAV_ITEMS?.map((item) => (
           <AccordionItem key={item.id} value={item.tab_id} className="px-6">
-            <AccordionTrigger>
+            <AccordionTrigger disabled={item.isDisabled}>
               <div className="flex items-center gap-2">
                 <item.icon className="size-4" />
-                {item.title}
+                {item.title}{" "}
+                {item.isPro && (
+                  <Badge>
+                    <Lock className="size-1" /> Pro
+                  </Badge>
+                )}
               </div>
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance">
-              {/* Content for each section can be added here */}
               <p>
                 This is the content for {item.title}. You can add more details
                 about this section here.
