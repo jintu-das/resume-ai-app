@@ -1,13 +1,18 @@
-import { Button } from "@/components/ui/button";
 import {
   Award,
   Briefcase,
   Code,
   FileText,
   GraduationCap,
-  Plus,
   User,
 } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const NAV_ITEMS = [
   {
@@ -50,24 +55,31 @@ const NAV_ITEMS = [
 
 export default function ResumeSidebar() {
   return (
-    <aside className="border-r p-6 hidden lg:block">
-      <div className="space-y-6 ">
+    <aside className="border-r  hidden lg:block">
+      <Accordion
+        type="single"
+        collapsible
+        className="w-full"
+        defaultValue="item-1"
+      >
         {NAV_ITEMS?.map((item) => (
-          <Button
-            key={item.id}
-            size="lg"
-            variant={item.id === 1 ? "default" : "ghost"}
-            className="w-full justify-start !pl-6"
-          >
-            <item.icon className="size-4 mr-2" />
-            {item.title}
-          </Button>
+          <AccordionItem key={item.id} value={item.tab_id} className="px-6">
+            <AccordionTrigger>
+              <div className="flex items-center gap-2">
+                <item.icon className="size-4" />
+                {item.title}
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-4 text-balance">
+              {/* Content for each section can be added here */}
+              <p>
+                This is the content for {item.title}. You can add more details
+                about this section here.
+              </p>
+            </AccordionContent>
+          </AccordionItem>
         ))}
-
-        <Button variant="outline" className="w-full">
-          <Plus className="size-4" /> Add Section
-        </Button>
-      </div>
+      </Accordion>
     </aside>
   );
 }

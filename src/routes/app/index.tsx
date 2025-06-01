@@ -9,10 +9,10 @@ export const Route = createFileRoute("/app/")({
 
 function RouteComponent() {
   return (
-    <main className="flex-1 grid grid-cols-1 lg:grid-cols-[300px_400px_1fr] h-full">
+    <main className="flex-1 grid grid-cols-1 lg:grid-cols-[400px_1fr_400px] h-full">
       <ResumeSidebar />
-      <ResumeSecondarySidebar />
       <ResumeContainer />
+      <ResumeSecondarySidebar />
     </main>
   );
 }
