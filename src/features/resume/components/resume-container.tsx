@@ -1,14 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useFormContext } from "react-hook-form";
 
 export default function ResumeContainer() {
+  const form = useFormContext();
   return (
     <section className="grid place-content-center bg-primary-foreground dark:bg-background">
-      <Card className="max-w-[600px] h-[800px] mx-3">
+      <Card className="w=full min-w-[500px] max-w-[600px] h-[800px] mx-3">
         <CardContent>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ut
-            odio quas, quaerat sint quos autem harum dolorum ea. Possimus iusto
-            corrupti cumque, dignissimos laborum impedit ea ipsam neque rem?
+          <p className="whitespace-pre">
+            {JSON.stringify(form.getValues(), null, 6)}
           </p>
         </CardContent>
       </Card>

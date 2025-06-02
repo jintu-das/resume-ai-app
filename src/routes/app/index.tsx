@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import ResumeContainer from "@/features/resume/components/resume-container";
-import ResumeSecondarySidebar from "@/features/resume/components/resume-secondary-sidebar";
 import ResumeSidebar from "@/features/resume/components/resume-sidebar";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute } from "@tanstack/react-router";
@@ -55,11 +53,11 @@ function RouteComponent() {
       <FormProvider {...form}>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <main className="flex-1 grid grid-cols-1 lg:grid-cols-[400px_1fr_400px] h-full">
+            <main className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_2fr] h-full">
               <ResumeSidebar />
               <ResumeContainer />
-              <ResumeSecondarySidebar />
-              <Button type="submit">Submit</Button>
+              {/* <ResumeSecondarySidebar /> */}
+              {/* <Button type="submit">Submit</Button> */}
             </main>
           </form>
         </Form>
