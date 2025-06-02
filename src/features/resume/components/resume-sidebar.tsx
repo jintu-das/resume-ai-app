@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import PersonalInformation from "./personal-information";
 
 const NAV_ITEMS = [
   {
@@ -25,6 +26,7 @@ const NAV_ITEMS = [
     icon: User,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 2,
@@ -33,6 +35,7 @@ const NAV_ITEMS = [
     icon: Briefcase,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 3,
@@ -41,6 +44,7 @@ const NAV_ITEMS = [
     icon: GraduationCap,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 4,
@@ -49,6 +53,7 @@ const NAV_ITEMS = [
     icon: Code,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 5,
@@ -57,6 +62,7 @@ const NAV_ITEMS = [
     icon: FileText,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 6,
@@ -65,6 +71,7 @@ const NAV_ITEMS = [
     icon: Award,
     isPro: false,
     isDisabled: false,
+    component: PersonalInformation,
   },
   {
     id: 7,
@@ -73,6 +80,7 @@ const NAV_ITEMS = [
     icon: CirclePlus,
     isPro: true, // Assuming this is a pro feature
     isDisabled: true,
+    component: PersonalInformation,
   },
 ];
 
@@ -88,7 +96,7 @@ export default function ResumeSidebar() {
         {NAV_ITEMS?.map((item) => (
           <AccordionItem key={item.id} value={item.tab_id} className="px-6">
             <AccordionTrigger disabled={item.isDisabled}>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 font-medium">
                 <item.icon className="size-4" />
                 {item.title}{" "}
                 {item.isPro && (
@@ -99,10 +107,7 @@ export default function ResumeSidebar() {
               </div>
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance">
-              <p>
-                This is the content for {item.title}. You can add more details
-                about this section here.
-              </p>
+              <item.component />
             </AccordionContent>
           </AccordionItem>
         ))}
