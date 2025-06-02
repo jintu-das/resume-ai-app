@@ -49,19 +49,20 @@ function RouteComponent() {
   }
 
   return (
-    <div>
+    <main className="flex flex-col flex-1 h-full">
       <FormProvider {...form}>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <main className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_2fr] h-full">
-              <ResumeSidebar />
-              <ResumeContainer />
-              {/* <ResumeSecondarySidebar /> */}
-              {/* <Button type="submit">Submit</Button> */}
-            </main>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_2fr] h-full"
+          >
+            <ResumeSidebar />
+            <ResumeContainer />
+            {/* <ResumeSecondarySidebar /> */}
+            {/* <Button type="submit">Submit</Button> */}
           </form>
         </Form>
       </FormProvider>
-    </div>
+    </main>
   );
 }
