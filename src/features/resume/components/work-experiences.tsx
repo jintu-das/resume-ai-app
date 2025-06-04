@@ -118,7 +118,7 @@ export default function WorkExperiences() {
         ))}
 
         <Button variant="outline" size="sm" onClick={() => append("")}>
-          <Plus className="size-4" /> Add More
+          <Plus className="size-4" /> Add More Experience
         </Button>
       </div>
     </>
