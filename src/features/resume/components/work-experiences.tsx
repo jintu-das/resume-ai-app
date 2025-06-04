@@ -20,7 +20,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 
 export default function WorkExperiences() {
   const form = useFormContext();
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "experiences",
   });
 
@@ -109,7 +109,7 @@ export default function WorkExperiences() {
             </CardContent>
 
             <CardFooter>
-              <Button>
+              <Button onClick={() => remove(index)}>
                 <Trash className="size-4" />
                 Delete
               </Button>

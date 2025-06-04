@@ -11,7 +11,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 
 export default function Skills() {
   const form = useFormContext();
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "skills",
   });
 
@@ -33,7 +33,7 @@ export default function Skills() {
               )}
             />
 
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" onClick={() => remove(index)}>
               <Trash className="size-4" />
             </Button>
           </div>
