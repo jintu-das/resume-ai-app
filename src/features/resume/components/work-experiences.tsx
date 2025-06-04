@@ -1,12 +1,10 @@
-import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   FormControl,
   FormField,
@@ -26,14 +24,18 @@ export default function WorkExperiences() {
 
   return (
     <>
-      <div className="space-y-4 p-2">
+      <Accordion type="single" collapsible className="w-full space-y-4 p-2">
         {fields?.map((field, index) => (
-          <Card key={field.id}>
-            <CardHeader>
-              <CardTitle>Google</CardTitle>
-              <CardDescription>December 2021</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+          <AccordionItem
+            value={field.id}
+            key={field.id}
+            className="bg-background has-focus-visible:border-ring has-focus-visible:ring-ring/50 rounded-md border px-4 py-1 outline-none last:border-b has-focus-visible:ring-[3px]"
+          >
+            <AccordionTrigger className="font-semibold">
+              Frontend Developer at Google
+            </AccordionTrigger>
+
+            <AccordionContent className="space-y-4">
               <FormField
                 control={form.control}
                 name={`experiences.${index}.title`}
@@ -106,21 +108,19 @@ export default function WorkExperiences() {
                   </FormItem>
                 )}
               />
-            </CardContent>
 
-            <CardFooter>
               <Button onClick={() => remove(index)}>
                 <Trash className="size-4" />
                 Delete
               </Button>
-            </CardFooter>
-          </Card>
+            </AccordionContent>
+          </AccordionItem>
         ))}
 
         <Button variant="outline" size="sm" onClick={() => append("")}>
           <Plus className="size-4" /> Add More Experience
         </Button>
-      </div>
+      </Accordion>
     </>
   );
 }
