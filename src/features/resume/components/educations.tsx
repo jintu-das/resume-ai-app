@@ -16,10 +16,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus, Trash } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-export default function WorkExperiences() {
+export default function Educations() {
   const form = useFormContext();
   const { fields, append, remove } = useFieldArray({
-    name: "experiences",
+    name: "educations",
   });
 
   return (
@@ -32,17 +32,17 @@ export default function WorkExperiences() {
             className="bg-background has-focus-visible:border-ring has-focus-visible:ring-ring/50 rounded-md border px-4 py-1 outline-none last:border-b has-focus-visible:ring-[3px]"
           >
             <AccordionTrigger className="font-semibold">
-              Frontend Developer at Google
+              MCA at MIT, NY
             </AccordionTrigger>
 
             <AccordionContent className="space-y-4 px-1 pt-1">
               <FormField
                 control={form.control}
-                name={`experiences.${index}.title`}
+                name={`educations.${index}.school`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Job Title" {...field} />
+                      <Input placeholder="School Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -50,11 +50,11 @@ export default function WorkExperiences() {
               />
               <FormField
                 control={form.control}
-                name={`experiences.${index}.employer`}
+                name={`educations.${index}.degree`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="Employer" {...field} />
+                      <Input placeholder="Degree" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -62,19 +62,7 @@ export default function WorkExperiences() {
               />
               <FormField
                 control={form.control}
-                name={`experiences.${index}.startDate`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input placeholder="Start Date" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name={`experiences.${index}.endDate`}
+                name={`educations.${index}.endDate`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -84,9 +72,10 @@ export default function WorkExperiences() {
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
-                name={`experiences.${index}.city`}
+                name={`educations.${index}.city`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -98,7 +87,7 @@ export default function WorkExperiences() {
               />
               <FormField
                 control={form.control}
-                name={`experiences.${index}.description]`}
+                name={`educations.${index}.description]`}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -122,16 +111,15 @@ export default function WorkExperiences() {
           size="sm"
           onClick={() =>
             append({
-              title: "",
-              employer: "",
-              startDate: "",
+              school: "",
+              degree: "",
               endDate: "",
               city: "",
               description: "",
             })
           }
         >
-          <Plus className="size-4" /> Add More Experience
+          <Plus className="size-4" /> Add More Education
         </Button>
       </Accordion>
     </>

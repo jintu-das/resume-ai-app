@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import PersonalInformation from "./personal-information";
 import Skills from "./skills";
 import WorkExperiences from "./work-experiences";
+import Educations from "./educations";
 
 const NAV_ITEMS = [
   {
@@ -46,7 +47,7 @@ const NAV_ITEMS = [
     icon: GraduationCap,
     isPro: false,
     isDisabled: false,
-    component: PersonalInformation,
+    component: Educations,
   },
   {
     id: 4,
@@ -105,7 +106,7 @@ export default function ResumeSidebar() {
                 {item.title}{" "}
                 {item.isPro && (
                   <Badge>
-                    <Lock className="size-1" /> Pro
+                    <Lock className="size-1" /> Upcoming
                   </Badge>
                 )}
               </div>
