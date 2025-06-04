@@ -85,6 +85,8 @@ const NAV_ITEMS = [
 ];
 
 export default function ResumeSidebar() {
+  console.log("ResumeSidebar rendered");
+
   return (
     <aside className="border-r  hidden lg:block">
       <Accordion
