@@ -27,6 +27,28 @@ const formSchema = z.object({
     message: "Address must be at least 5 characters.",
   }),
   skills: z.array(z.string()).nonempty("Please at least one item"),
+  experiences: z
+    .array(
+      z.object({
+        title: z.string().min(2, {
+          message: "Company name must be at least 2 characters.",
+        }),
+        employer: z.string().min(2, {
+          message: "Position must be at least 2 characters.",
+        }),
+        startDate: z.string().min(1, {
+          message: "Start date is required.",
+        }),
+        endDate: z.string().optional(),
+        city: z.string().min(2, {
+          message: "City must be at least 2 characters.",
+        }),
+        description: z.string().min(5, {
+          message: "Description must be at least 5 characters.",
+        }),
+      })
+    )
+    .nonempty("Please add at least one work experience"),
 });
 
 function RouteComponent() {
@@ -39,6 +61,16 @@ function RouteComponent() {
       email: "",
       address: "",
       skills: ["React"],
+      experiences: [
+        {
+          title: "",
+          employer: "",
+          startDate: "",
+          endDate: "",
+          city: "",
+          description: "",
+        },
+      ],
     },
   });
 
