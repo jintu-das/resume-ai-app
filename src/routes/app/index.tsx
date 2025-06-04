@@ -60,8 +60,6 @@ function RouteComponent() {
           >
             <ResumeSidebar />
             <ResumeContainer />
-            {/* <ResumeSecondarySidebar /> */}
-            {/* <Button type="submit">Submit</Button> */}
           </form>
         </Form>
       </FormProvider>
