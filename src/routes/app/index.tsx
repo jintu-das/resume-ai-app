@@ -26,11 +26,10 @@ const formSchema = z.object({
   address: z.string().min(5, {
     message: "Address must be at least 5 characters.",
   }),
+  skills: z.array(z.string()).nonempty("Please at least one item"),
 });
 
 function RouteComponent() {
-  // const form = useForm();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,6 +38,7 @@ function RouteComponent() {
       mobile: "",
       email: "",
       address: "",
+      skills: ["React"],
     },
   });
 

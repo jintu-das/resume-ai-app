@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import PersonalInformation from "./personal-information";
+import Skills from "./skills";
 
 const NAV_ITEMS = [
   {
@@ -53,7 +54,7 @@ const NAV_ITEMS = [
     icon: Code,
     isPro: false,
     isDisabled: false,
-    component: PersonalInformation,
+    component: Skills,
   },
   {
     id: 5,
