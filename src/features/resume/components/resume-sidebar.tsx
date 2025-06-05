@@ -84,8 +84,8 @@ const NAV_ITEMS = [
     tab_id: "projects",
     title: "Projects",
     icon: FileText,
-    isPro: false,
-    isDisabled: false,
+    isPro: true,
+    isDisabled: true,
     component: PersonalInformation,
   },
   {
