@@ -5,6 +5,7 @@ import {
   Code,
   FileText,
   GraduationCap,
+  Link,
   Lock,
   ScrollText,
   User,
@@ -22,6 +23,7 @@ import Skills from "./skills";
 import WorkExperiences from "./work-experiences";
 import Educations from "./educations";
 import ProfessionalSummary from "./professional-summary";
+import SocialLinks from "./social-links";
 
 const NAV_ITEMS = [
   {
@@ -34,7 +36,7 @@ const NAV_ITEMS = [
     component: PersonalInformation,
   },
   {
-    id: 8,
+    id: 2,
     tab_id: "professional-summary",
     title: "Professional Summary",
     icon: ScrollText,
@@ -43,7 +45,7 @@ const NAV_ITEMS = [
     component: ProfessionalSummary,
   },
   {
-    id: 2,
+    id: 3,
     tab_id: "work-experience",
     title: "Work Experience",
     icon: Briefcase,
@@ -52,7 +54,7 @@ const NAV_ITEMS = [
     component: WorkExperiences,
   },
   {
-    id: 3,
+    id: 4,
     tab_id: "education",
     title: "Education",
     icon: GraduationCap,
@@ -61,7 +63,7 @@ const NAV_ITEMS = [
     component: Educations,
   },
   {
-    id: 4,
+    id: 5,
     tab_id: "skills",
     title: "Skills",
     icon: Code,
@@ -70,7 +72,16 @@ const NAV_ITEMS = [
     component: Skills,
   },
   {
-    id: 5,
+    id: 6,
+    tab_id: "social-links",
+    title: "Social Links",
+    icon: Link,
+    isPro: false,
+    isDisabled: false,
+    component: SocialLinks,
+  },
+  {
+    id: 7,
     tab_id: "projects",
     title: "Projects",
     icon: FileText,
@@ -79,7 +90,7 @@ const NAV_ITEMS = [
     component: PersonalInformation,
   },
   {
-    id: 6,
+    id: 8,
     tab_id: "certifications",
     title: "Certifications",
     icon: Award,
@@ -88,7 +99,7 @@ const NAV_ITEMS = [
     component: PersonalInformation,
   },
   {
-    id: 7,
+    id: 9,
     tab_id: "add-more-details",
     title: "Add More Details",
     icon: CirclePlus,

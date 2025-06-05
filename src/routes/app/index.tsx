@@ -40,6 +40,17 @@ function RouteComponent() {
           description: "",
         },
       ],
+      professionalSummary: "",
+      socialLinks: [
+        {
+          platform: "LinkedIn",
+          url: "",
+        },
+        {
+          platform: "GitHub",
+          url: "",
+        },
+      ],
     },
   });
 

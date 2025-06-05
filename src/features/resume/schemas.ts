@@ -64,4 +64,16 @@ export const resumeFormSchema = z.object({
       })
     )
     .nonempty("Please add at least one education"),
+  socialLinks: z
+    .array(
+      z.object({
+        platform: z.string().min(1, {
+          message: "Platform is required.",
+        }),
+        url: z.string().url({
+          message: "Invalid URL format.",
+        }),
+      })
+    )
+    .optional(),
 });
