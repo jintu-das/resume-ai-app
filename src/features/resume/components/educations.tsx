@@ -107,7 +107,7 @@ export default function Educations() {
         ))}
 
         <Button
-          variant="outline"
+          variant="link"
           size="sm"
           onClick={() =>
             append({

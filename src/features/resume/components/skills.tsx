@@ -39,7 +39,7 @@ export default function Skills() {
           </div>
         ))}
 
-        <Button variant="outline" size="sm" onClick={() => append("")}>
+        <Button variant="link" size="sm" onClick={() => append("")}>
           <Plus className="size-4" /> Add More Skill
         </Button>
       </div>

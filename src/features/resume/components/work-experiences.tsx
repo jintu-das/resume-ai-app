@@ -118,7 +118,7 @@ export default function WorkExperiences() {
         ))}
 
         <Button
-          variant="outline"
+          variant="link"
           size="sm"
           onClick={() =>
             append({
