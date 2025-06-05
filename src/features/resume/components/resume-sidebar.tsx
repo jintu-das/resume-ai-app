@@ -1,5 +1,4 @@
 import {
-  Award,
   Briefcase,
   CirclePlus,
   Code,
@@ -18,12 +17,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import PersonalInformation from "./personal-information";
-import Skills from "./skills";
-import WorkExperiences from "./work-experiences";
 import Educations from "./educations";
+import PersonalInformation from "./personal-information";
 import ProfessionalSummary from "./professional-summary";
+import Skills from "./skills";
 import SocialLinks from "./social-links";
+import WorkExperiences from "./work-experiences";
 
 const NAV_ITEMS = [
   {
@@ -91,15 +90,6 @@ const NAV_ITEMS = [
   },
   {
     id: 8,
-    tab_id: "certifications",
-    title: "Certifications",
-    icon: Award,
-    isPro: false,
-    isDisabled: false,
-    component: PersonalInformation,
-  },
-  {
-    id: 9,
     tab_id: "add-more-details",
     title: "Add More Details",
     icon: CirclePlus,
