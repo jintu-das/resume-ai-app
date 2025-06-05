@@ -6,6 +6,7 @@ import {
   FileText,
   GraduationCap,
   Lock,
+  ScrollText,
   User,
 } from "lucide-react";
 
@@ -20,6 +21,7 @@ import PersonalInformation from "./personal-information";
 import Skills from "./skills";
 import WorkExperiences from "./work-experiences";
 import Educations from "./educations";
+import ProfessionalSummary from "./professional-summary";
 
 const NAV_ITEMS = [
   {
@@ -30,6 +32,15 @@ const NAV_ITEMS = [
     isPro: false,
     isDisabled: false,
     component: PersonalInformation,
+  },
+  {
+    id: 8,
+    tab_id: "professional-summary",
+    title: "Professional Summary",
+    icon: ScrollText,
+    isPro: false,
+    isDisabled: false,
+    component: ProfessionalSummary,
   },
   {
     id: 2,

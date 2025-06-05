@@ -16,6 +16,12 @@ export const resumeFormSchema = z.object({
   address: z.string().min(5, {
     message: "Address must be at least 5 characters.",
   }),
+  professionalSummary: z
+    .string()
+    .min(10, {
+      message: "Professional summary must be at least 10 characters.",
+    })
+    .optional(),
   skills: z.array(z.string()).nonempty("Please at least one item"),
   experiences: z
     .array(
