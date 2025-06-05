@@ -15,7 +15,7 @@ export default function ResumeContainer() {
     <section className="grid place-content-center bg-primary-foreground dark:bg-background">
       <Card className="w=full min-w-[500px] max-w-[600px] h-[800px] mx-3">
         <CardContent>
-          <p className="whitespace-pre text-xs font-mono">
+          <p className="text-xs font-mono">
             {JSON.stringify(formValues, null, 3)}
           </p>
         </CardContent>
