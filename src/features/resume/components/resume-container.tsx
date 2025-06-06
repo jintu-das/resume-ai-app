@@ -9,8 +9,6 @@ export default function ResumeContainer() {
     defaultValue: form.getValues(),
   });
 
-  console.count("ResumeContainer rendered");
-
   return (
     <section className="grid place-content-center bg-primary-foreground dark:bg-background">
       <Card className="w=full min-w-[500px] max-w-[600px] h-[800px] mx-3">

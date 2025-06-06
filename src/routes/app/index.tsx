@@ -60,8 +60,6 @@ function RouteComponent() {
     console.log(values);
   }
 
-  console.log("parent component rendered");
-
   return (
     <main className="flex flex-col flex-1 h-full">
       <FormProvider {...form}>
