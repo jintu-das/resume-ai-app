@@ -1,3 +1,4 @@
+import TextEditor from "@/components/text-editor";
 import {
   FormControl,
   FormField,
@@ -25,6 +26,8 @@ export default function ProfessionalSummary() {
             </FormItem>
           )}
         />
+
+        <TextEditor />
       </div>
     </>
   );
