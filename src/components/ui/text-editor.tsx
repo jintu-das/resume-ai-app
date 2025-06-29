@@ -21,8 +21,6 @@ type TextEditorProps = {
 // define your extension array
 const extensions = [
   StarterKit,
-
-  // OrderedList,
   Placeholder.configure({
     placeholder: "Write something …",
   }),
@@ -38,7 +36,7 @@ export default function TextEditor({ content, onChange }: TextEditorProps) {
     editorProps: {
       attributes: {
         class:
-          "prose prose-sm prose-tight sm:prose-base dark:prose-invert text-sm/3 max-w-none focus:outline-none",
+          "prose prose-sm prose-tight  dark:prose-invert  max-w-none focus:outline-none",
       },
     },
     extensions,
@@ -48,10 +46,7 @@ export default function TextEditor({ content, onChange }: TextEditorProps) {
   return (
     <div className="p-3 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input w-full  rounded-md border bg-transparent text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm">
       <MenuBar editor={editor} />
-      <EditorContent
-        editor={editor}
-        className="pt-4 [&>div]:focus:outline-0 px-3 pb-4"
-      />
+      <EditorContent editor={editor} className="pt-4  px-3 pb-4" />
     </div>
   );
 }
