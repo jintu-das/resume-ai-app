@@ -12,19 +12,61 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import Placeholder from "@tiptap/extension-placeholder";
+import ListItem from "@tiptap/extension-list-item";
+// import OrderedList from "@tiptap/extension-ordered-list";
+import BulletList from "@tiptap/extension-bullet-list";
 
 // define your extension array
 const extensions = [
   StarterKit,
+  ListItem,
+  BulletList,
+  // OrderedList,
   Placeholder.configure({
     placeholder: "Write something …",
   }),
 ];
 
-const content = "";
+const content = `
+   <h2>
+      Hi there,
+    </h2>
+    <p>
+      this is a basic <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
+    </p>
+    <ul>
+      <li>
+        That’s a bullet list with one …
+      </li>
+      <li>
+        … or two list items.
+      </li>
+    </ul>
+    <p>
+      Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
+    </p>
+<pre><code class="language-css">body {
+  display: none;
+}</code></pre>
+    <p>
+      I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
+    </p>
+    <blockquote>
+      Wow, that’s amazing. Good work, boy! 👏
+      <br />
+      — Mom
+    </blockquote>
+`;
 
 export default function TextEditor() {
   const editor = useEditor({
+    editorProps: {
+      attributes: {
+        class:
+          // "prose prose-sm sm:prose-base dark:prose-invert max-w-none focus:outline-none",
+          "prose prose-sm sm:prose-base dark:prose-invert text-sm/3 max-w-none focus:outline-none",
+      },
+    },
     extensions,
     content,
   });
@@ -73,9 +115,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       </Button>
       <Button
         size="icon"
-        variant={editor.isActive("code") ? "default" : "ghost"}
-        onClick={() => editor.chain().focus().toggleCode().run()}
-        disabled={!editor.can().chain().focus().toggleCode().run()}
+        variant={editor.isActive("codeBlock") ? "default" : "ghost"}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        disabled={!editor.can().chain().focus().toggleCodeBlock().run()}
       >
         <Code className="size-4" />
       </Button>
