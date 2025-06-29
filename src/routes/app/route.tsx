@@ -23,7 +23,7 @@ export const Route = createFileRoute("/app")({
 function RouteComponent() {
   return (
     <>
-      <header className="flex items-center justify-between gap-2 p-4 border-b">
+      <header className="flex items-center justify-between gap-2 p-4 border-b sticky top-0 z-10 bg-background">
         <div className="flex-1">
           <div className="flex items-center space-x-2">
             <SparkleIcon className="size-4 text-primary" />
