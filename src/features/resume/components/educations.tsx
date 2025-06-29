@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import TextEditor from "@/components/ui/text-editor";
 import { Plus, Trash } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
@@ -91,7 +91,10 @@ export default function Educations() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea placeholder="Description" {...field} />
+                      <TextEditor
+                        content={field.value}
+                        onChange={(content) => field.onChange(content)}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
