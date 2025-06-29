@@ -1,3 +1,4 @@
+import Placeholder from "@tiptap/extension-placeholder";
 import { Editor, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import {
@@ -11,16 +12,11 @@ import {
   Undo2,
 } from "lucide-react";
 import { Button } from "./ui/button";
-import Placeholder from "@tiptap/extension-placeholder";
-import ListItem from "@tiptap/extension-list-item";
-// import OrderedList from "@tiptap/extension-ordered-list";
-import BulletList from "@tiptap/extension-bullet-list";
 
 // define your extension array
 const extensions = [
   StarterKit,
-  ListItem,
-  BulletList,
+
   // OrderedList,
   Placeholder.configure({
     placeholder: "Write something …",
@@ -63,8 +59,7 @@ export default function TextEditor() {
     editorProps: {
       attributes: {
         class:
-          // "prose prose-sm sm:prose-base dark:prose-invert max-w-none focus:outline-none",
-          "prose prose-sm sm:prose-base dark:prose-invert text-sm/3 max-w-none focus:outline-none",
+          "prose prose-sm prose-tight sm:prose-base dark:prose-invert text-sm/3 max-w-none focus:outline-none",
       },
     },
     extensions,
@@ -113,6 +108,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       >
         <Strikethrough className="size-4" />
       </Button>
+
       <Button
         size="icon"
         variant={editor.isActive("codeBlock") ? "default" : "ghost"}
